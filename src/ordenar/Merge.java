@@ -54,8 +54,8 @@ public class Merge {
 			indiceBuffer++;
 			indice2++;
 		}
-		for(int i=0;i<arregloBuffer.length;i++) {
-			arreglo[i]=arregloBuffer[i];
+		for(int i=0;i<longitud1+longitud2;i++) {
+			arreglo[inicio+i]=arregloBuffer[i];
 		}
 	}
 
