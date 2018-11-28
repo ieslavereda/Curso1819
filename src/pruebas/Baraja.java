@@ -26,5 +26,15 @@ public class Baraja {
 			System.out.println();;
 		}
 	}
+	public Carta repartirCarta() {
+		int palo = (int)(Math.random()*3+1);
+		int valor = (int)(Math.random()*11+1);
+		while(cartas[palo][valor].getRepartida()) {
+			palo = (int)(Math.random()*3+1);
+			valor = (int)(Math.random()*11+1);
+		}
+		cartas[palo][valor].setRepartida(true);
+		return cartas[palo][valor];
+	}
 
 }

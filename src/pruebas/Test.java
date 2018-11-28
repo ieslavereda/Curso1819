@@ -1,17 +1,27 @@
 package pruebas;
 
+import java.util.Scanner;
+
 public class Test {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
-		try {
+		Carta c;
 
 //			Carta c = new Carta(Carta.COPAS, Carta.CUATRO);
-			Baraja b = new Baraja();
-			b.echarCartas();
+		Baraja b = new Baraja();
 
-		} catch (Exception e) {
+		Scanner entrada = new Scanner(System.in);
+
+		System.out.println("Quieres una carta?");
+		String opcion = entrada.next();
+
+		while (opcion.equals("s")) {
+			c = b.repartirCarta();
+			System.out.println(c.toString());
+			System.out.println("Quieres otra carta?");
+			opcion = entrada.next();
 		}
 
 	}

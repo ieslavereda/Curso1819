@@ -23,12 +23,15 @@ public class Carta {
 	public final static int SOTA = 10;
 	public final static int CABALLO = 11;
 	public final static int REY = 12;
+	
+	private boolean repartida;
 
 	public Carta(int palo, int valor) throws Exception {
 		if (palo > 4 || palo < 1 || valor > 12 || valor < 1)
 			throw new Exception();
 		this.valor = valor;
 		this.palo = palo;
+		this.repartida=false;
 	}
 
 	public String obtenerPalo() {
@@ -55,6 +58,12 @@ public class Carta {
 	}
 	public String toString() {
 		return valor+" de "+obtenerPalo();
+	}
+	public boolean getRepartida() {
+		return repartida;
+	}
+	public void setRepartida(boolean repartida) {
+		this.repartida=repartida;
 	}
 
 }
