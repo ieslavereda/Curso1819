@@ -54,5 +54,9 @@ public class Persona {
 		this.email = email;
 	}
 	
-	
+	public String toString() {
+		return "Nombre: " + nombre + "\n"+
+				"Apellidos: " + apellidos +"\n" +
+				"DNI: " + DNI;
+	}
 }
