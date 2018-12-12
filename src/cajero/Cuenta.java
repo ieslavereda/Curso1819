@@ -76,7 +76,16 @@ public class Cuenta {
 		return false;
 
 	}
+	
+	public String getPin() {
+		return pin.getPasswd();
+	}
 	public boolean comprobarPIN(String pin) {
 		return this.pin.comprobarPassword(pin);
+	}
+	public String toString() {
+		return "Numero: " + numero + "\n"+
+				"Saldo: " + saldo + "\n" +
+				"Titular:\n" + titular;
 	}
 }

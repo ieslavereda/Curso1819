@@ -7,11 +7,11 @@ public class Persona {
 	private String DNI;
 	private String fechaNac;
 	private String email;
-	
-	public Persona(String nombre,String apellidos, String DNI) {
-		this.nombre=nombre;
-		this.apellidos=apellidos;
-		this.DNI=DNI;
+
+	public Persona(String nombre, String apellidos, String DNI) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.DNI = DNI;
 	}
 
 	public String getNombre() {
@@ -53,10 +53,17 @@ public class Persona {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String toString() {
-		return "Nombre: " + nombre + "\n"+
-				"Apellidos: " + apellidos +"\n" +
-				"DNI: " + DNI;
+		return "Nombre: " + nombre + "\n" + "Apellidos: " + apellidos + "\n" + "DNI: " + DNI;
+	}
+
+	public boolean equals(Persona p) {
+		boolean iguales = false;
+		if (p != null) {
+			if (p.getDNI().compareTo(DNI) == 0)
+				iguales = true;
+		}
+		return iguales;
 	}
 }
