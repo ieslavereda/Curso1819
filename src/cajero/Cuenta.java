@@ -77,6 +77,18 @@ public class Cuenta {
 
 	}
 	
+	public Persona getTitular() {
+		return titular;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public float getSaldo() {
+		return saldo;
+	}
+
 	public String getPin() {
 		return pin.getPasswd();
 	}
