@@ -18,6 +18,9 @@ public class Cajero {
 			mostrarMenuPrincipal();
 			opcion = entrada.nextInt();
 			switch (opcion) {
+			case 1:
+				reintegro(titulares, cuentas);
+				break;
 			case 2:
 				ingresar(titulares, cuentas);
 				break;
@@ -31,6 +34,45 @@ public class Cajero {
 
 		} while (opcion != -1);
 
+	}
+	
+	public static void reintegro(Persona[] titulares,Cuenta[] cuentas) {
+		Scanner entrada = new Scanner(System.in);
+		String dni;
+		Persona persona;
+		int indice;
+		float cantidad;
+		String pin;
+
+		System.out.println("Introduzca su DNI:");
+		dni = entrada.next();
+		
+		persona = buscarTitular(titulares, dni);
+		if (persona != null) {
+			if (buscarCuentasTitular(cuentas, persona)) {
+				System.out.println("De que cuenta quiere el reintegro?:");
+				indice = entrada.nextInt();
+				if (cuentas[indice] != null) {
+					if (cuentas[indice].getTitular().equals(persona)) {
+						System.out.println("Cuanto quieres sacar?:");
+						cantidad = entrada.nextFloat();
+						System.out.println("Introduzca el PIN:");
+						pin = entrada.next();
+						
+						if(cuentas[indice].reintegro(persona,pin,cantidad)) {
+							System.out.println("Aqui tiene su dinero");
+						}else {
+							System.out.println("Error.");
+						}
+						
+					} else {
+						System.out.println("Esa cuenta no es suya");
+					}
+				} else {
+					System.out.println("No existe esa cuenta");
+				}
+			}
+		}
 	}
 
 	public static void ingresar(Persona[] titulares, Cuenta[] cuentas) {
@@ -51,12 +93,18 @@ public class Cajero {
 					if (cuentas[indice].getTitular().equals(persona)) {
 						System.out.println("Cuanto quiere ingresar?:");
 						cuentas[indice].ingreso(entrada.nextFloat());
+					} else {
+						System.out.println("Esa cuenta no es suya");
 					}
+				} else {
+					System.out.println("No existe esa cuenta");
 				}
 
 			} else {
 				System.out.println("No tiene cuentas a su nombre.");
 			}
+		} else {
+			System.out.println("No existe ese titular");
 		}
 	}
 

@@ -38,13 +38,16 @@ public class Cuenta {
 //		}	
 	}
 
-	public boolean reintegro(float cantidad) {
+	public boolean reintegro(Persona p, String pin, float cantidad) {
 
 		boolean realizado = false;
 
-		if (saldo > cantidad && cantidad > 0) {
-			saldo -= cantidad;
-			realizado = true;
+		if (this.titular.equals(p) && this.pin.comprobarPassword(pin)) {
+
+			if (saldo > cantidad && cantidad > 0) {
+				saldo -= cantidad;
+				realizado = true;
+			}
 		}
 
 		return realizado;
@@ -67,7 +70,7 @@ public class Cuenta {
 		try {
 			Integer.parseInt(pin);
 			if (pin.length() == 4) {
-				this.pin= new Password(pin);
+				this.pin = new Password(pin);
 				return true;
 			}
 		} catch (Exception ignoreException) {
@@ -76,7 +79,7 @@ public class Cuenta {
 		return false;
 
 	}
-	
+
 	public Persona getTitular() {
 		return titular;
 	}
@@ -92,12 +95,12 @@ public class Cuenta {
 	public String getPin() {
 		return pin.getPasswd();
 	}
+
 	public boolean comprobarPIN(String pin) {
 		return this.pin.comprobarPassword(pin);
 	}
+
 	public String toString() {
-		return "Numero: " + numero + "\n"+
-				"Saldo: " + saldo + "\n" +
-				"Titular:\n" + titular;
+		return "Numero: " + numero + "\n" + "Saldo: " + saldo + "\n" + "Titular:\n" + titular;
 	}
 }
