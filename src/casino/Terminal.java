@@ -52,6 +52,7 @@ public class Terminal {
 			System.out.println("Debe introducir una cantidad positiva de dolares.");
 		} else {
 			tarjeta.setCreditos(tarjeta.getCreditos() + 2 * dolares);
+			consultarSaldos(tarjeta);
 		}
 	}
 
