@@ -6,10 +6,13 @@ public class Test {
 		// TODO Auto-generated method stub
 
 		ListaSimplementeEnlazada lista = new ListaSimplementeEnlazada();
-		Nodo n = new Nodo(7);
 		
-		lista.insertNodo(n);
-		lista.insertNodo(new Nodo(8));
+		
+		lista.insertNodo(new Nodo(1));
+		lista.insertNodo(new Nodo(3));
+		lista.insertarCabeza(new Nodo(0));
+		lista.insertarPosicion(new Nodo(2), 3);
+
 		
 		System.out.println(lista);
 		
