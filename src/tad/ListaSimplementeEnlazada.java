@@ -31,10 +31,11 @@ public class ListaSimplementeEnlazada {
 	}
 
 	public String toString() {
-		String salida = "";
+		String salida = "cantidad: " + cantidad+"\n";
 		Nodo aux = cabeza;
 		while (aux != null) {
 			salida = salida + aux.toString();
+			aux=aux.getSiguiente();
 		}
 		return salida;
 	}

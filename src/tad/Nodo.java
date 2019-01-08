@@ -27,9 +27,6 @@ public class Nodo {
 	}
 	
 	public String toString() {
-		return 	"Info: " + info +"\n"+
-				"Siguiente:" + siguiente + "\n";
-	}
-	
-	
+		return 	"Info: " + info +"\n";
+	}	
 }
