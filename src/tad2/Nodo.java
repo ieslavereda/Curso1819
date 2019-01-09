@@ -35,5 +35,9 @@ public class Nodo {
 	public void setAnterior(Nodo anterior) {
 		this.anterior = anterior;
 	}
+	
+	public String toString() {
+		return "--------------\n" + persona + "--------------\n";
+	}
 
 }

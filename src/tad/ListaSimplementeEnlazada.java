@@ -15,25 +15,31 @@ public class ListaSimplementeEnlazada {
 		cantidad = 1;
 	}
 
+	// Insercion de un elemento en una posicion dada
 	public void insertarPosicion(Nodo n, int posicion) {
 		Nodo aux = cabeza;
 		int i = 1;
 
+		// Comprobamos que la posicion a eliminar exista
 		if (posicion < 1 || posicion > cantidad) {
 			System.out.println("Posicion no valida");
 		} else if (posicion == 1) {
+			// Eliminamos la cabez
 			insertarCabeza(n);
 		} else {
+			// Avanzamos hasta la posicion anterior a insertar el elmento
 			while (i < posicion - 1) {
 				aux = aux.getSiguiente();
 				i++;
 			}
+			// Insertamos el elemento y actualizamos referencias
 			n.setSiguiente(aux.getSiguiente());
 			aux.setSiguiente(n);
 			cantidad++;
 		}
 	}
 
+	// Encolar un elemento por la cola
 	public void insertNodo(Nodo n) {
 		Nodo aux = cabeza;
 
@@ -59,9 +65,11 @@ public class ListaSimplementeEnlazada {
 		Nodo aux = cabeza;
 		int i = 1;
 
+		// Compruebo que la posicion sea valida
 		if (posicion < 1 || posicion > cantidad) {
 			System.out.println("Posicion no valida");
 		} else if (posicion == 1) {
+			// Si la posicion es 1 elimino la cabeza
 			cabeza = aux.getSiguiente();
 			cantidad--;
 		} else {

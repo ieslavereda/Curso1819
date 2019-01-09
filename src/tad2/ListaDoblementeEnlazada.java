@@ -48,4 +48,33 @@ public class ListaDoblementeEnlazada {
 			cantidad++;			
 		}
 	}
+	public boolean existe(Persona p) {
+		// La variable existe solo se modificara si se encuentra el objeto
+		boolean encontrado=false;
+		
+		// Mientras haya elementos a comprobar y no haya encontrado el objeto
+		Nodo aux = cabeza;
+		while(aux!=null && !encontrado) {
+			// Actualizao la variable encontrado 
+			encontrado=aux.getPersona().equals(p);
+			aux=aux.getSiguiente();
+		}
+		
+		return encontrado;
+	}
+	public String toString() {
+		String salida="cantidad: " + cantidad +"\n";
+		Nodo aux=cabeza;
+		
+		// Mientras que el nodo contenga "algo"
+		while(aux!=null) {
+			// Añadimos a la salida la salida producida por aux.toString()
+			salida+=aux;
+			// Avanzamos
+			aux=aux.getSiguiente();
+		}
+		
+		return salida;
+	}
+	
 }
