@@ -14,18 +14,18 @@ public class ListaSimplementeEnlazada {
 		cabeza = n;
 		cantidad = 1;
 	}
-	
-	public void insertarPosicion(Nodo n,int posicion) {
+
+	public void insertarPosicion(Nodo n, int posicion) {
 		Nodo aux = cabeza;
 		int i = 1;
-		
-		if(posicion<1 || posicion>cantidad) {
+
+		if (posicion < 1 || posicion > cantidad) {
 			System.out.println("Posicion no valida");
-		}else if(posicion==1) {
+		} else if (posicion == 1) {
 			insertarCabeza(n);
-		}else {
-			while(i<posicion-1) {
-				aux=aux.getSiguiente();
+		} else {
+			while (i < posicion - 1) {
+				aux = aux.getSiguiente();
 				i++;
 			}
 			n.setSiguiente(aux.getSiguiente());
@@ -53,6 +53,65 @@ public class ListaSimplementeEnlazada {
 		n.setSiguiente(cabeza);
 		cabeza = n;
 		cantidad++;
+	}
+
+	public void eliminarPosicion(int posicion) {
+		Nodo aux = cabeza;
+		int i = 1;
+
+		if (posicion < 1 || posicion > cantidad) {
+			System.out.println("Posicion no valida");
+		} else if (posicion == 1) {
+			cabeza = aux.getSiguiente();
+			cantidad--;
+		} else {
+			while (i < posicion - 1) {
+				aux = aux.getSiguiente();
+				i++;
+			}
+			aux.setSiguiente(aux.getSiguiente().getSiguiente());
+			cantidad--;
+		}
+	}
+
+	public void eliminarPrimero(int elemento) {
+		Nodo aux = cabeza;
+		if (cantidad >= 1) {
+			if (cabeza.getInfo() == elemento) {
+
+				eliminarPosicion(1);
+			} else {
+				while (aux.getSiguiente() != null && aux.getSiguiente().getInfo() != elemento) {
+					aux = aux.getSiguiente();
+				}
+				if(aux.getSiguiente()!=null)aux.setSiguiente(aux.getSiguiente().getSiguiente());
+
+			}
+		}
+
+	}
+	public void eliminar(int elemento) {
+		Nodo aux = cabeza;
+		if (cantidad >= 1) {
+			if (cabeza.getInfo() == elemento) {
+
+				eliminarPosicion(1);
+			} else {
+				while (aux!=null && aux.getSiguiente() != null ) {
+					// Mientras sea igual al elemento buscado
+					while(aux.getSiguiente()!=null && aux.getSiguiente().getInfo() == elemento) {
+						// Eliminamos
+						aux.setSiguiente(aux.getSiguiente().getSiguiente());
+						cantidad--;
+					}
+					// Avanzamos
+					aux = aux.getSiguiente();
+				}
+				
+
+			}
+		}
+
 	}
 
 	
