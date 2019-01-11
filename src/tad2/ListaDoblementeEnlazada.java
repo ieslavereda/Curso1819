@@ -11,6 +11,17 @@ public class ListaDoblementeEnlazada {
 		cola = null;
 		cantidad = 0;
 	}
+	
+
+	public Nodo getCabeza() {
+		return cabeza;
+	}
+
+
+	public void setCabeza(Nodo cabeza) {
+		this.cabeza = cabeza;
+	}
+
 
 	public void insertarCola(Nodo n) {
 
