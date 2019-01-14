@@ -8,7 +8,7 @@ public class Detalle {
 	private float total;
 
 	public Detalle(int cantidad, String descripcion, float unitario) {
-		super();
+		
 		this.cantidad = cantidad;
 		this.descripcion = descripcion;
 		this.unitario = unitario;

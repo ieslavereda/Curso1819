@@ -9,31 +9,62 @@ public class Empresa {
 		Scanner entrada = new Scanner(System.in);
 		int opcion;
 		ListaClientes clientes = new ListaClientes();
+		Factura f=null;
 
-		menuPrincipal();
-		opcion = entrada.nextInt();
-		switch (opcion) {
-		case 1:
-			altaCliente(clientes);
-			break;
+		do {
+			menuPrincipal();
+			opcion = entrada.nextInt();
+			switch (opcion) {
+			case 1:
+				altaCliente(clientes);
+				break;
+			case 2:
+				System.out.println(clientes);
+				break;
+			case 3:
+				crearFactura(clientes, f);
+				break;
 
+			}
+		} while (opcion != -1);
+
+	}
+
+	public static void crearFactura(ListaClientes clientes, Factura f) {
+
+		Scanner entrada = new Scanner(System.in);
+		Cliente c;
+		String DNI;
+
+		System.out.println("DNI del cliente:");
+		DNI = entrada.nextLine();
+		
+		c = clientes.obtenerCliente(DNI);
+		if (c == null) {
+			System.out.println("No existe el cliente");
+		} else {
+			f=new Factura(c);
 		}
 
 	}
 
 	public static void altaCliente(ListaClientes clientes) {
-		
-		String nombre,apellidos,DNI;
+
+		String nombre, apellidos, DNI;
 		Scanner entrada = new Scanner(System.in);
-		
+
 		System.out.println("Dame el nombre:");
-		nombre=entrada.nextLine();
+		nombre = entrada.nextLine();
 		System.out.println("Dame los apellidos:");
 		apellidos = entrada.nextLine();
 		System.out.println("Dame el DNI:");
 		DNI = entrada.nextLine();
-		
-		clientes.insertarCliente(new Cliente(DNI,nombre,apellidos));
+
+		Cliente c = new Cliente(DNI, nombre, apellidos);
+		if (!clientes.existe(c))
+			clientes.insertarCliente(c);
+		else
+			System.out.println("Ya existe el cliente!");
 	}
 
 	public static void menuPrincipal() {
