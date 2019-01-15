@@ -8,7 +8,7 @@ public class Detalle {
 	private float total;
 
 	public Detalle(int cantidad, String descripcion, float unitario) {
-		
+
 		this.cantidad = cantidad;
 		this.descripcion = descripcion;
 		this.unitario = unitario;
@@ -47,10 +47,7 @@ public class Detalle {
 
 	@Override
 	public String toString() {
-		return "[ " +cantidad + " " + descripcion + "  " + unitario + "  "
-				+ total + " ]";
+		return "[ " + cantidad + " " + descripcion + "  " + unitario + "  " + total + " ]" + "\n";
 	}
-	
 
-	
 }

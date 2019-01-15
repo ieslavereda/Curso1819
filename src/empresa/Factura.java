@@ -1,5 +1,7 @@
 package empresa;
 
+import java.util.Date;
+
 public class Factura {
 
 	private static int numFactura = 1;
@@ -32,5 +34,11 @@ public class Factura {
 			aux = aux.getSiguiente();
 		}
 		this.total = total;
+	}
+
+	public String toString() {
+		Date d = new Date(fecha);
+		return "Factura nº: " + numero + "\n" + cliente + "Fecha: " + d + "\n" + detalles + "TOTAL: " + total + "\n";
+
 	}
 }

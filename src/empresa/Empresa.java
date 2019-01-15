@@ -9,7 +9,7 @@ public class Empresa {
 		Scanner entrada = new Scanner(System.in);
 		int opcion;
 		ListaClientes clientes = new ListaClientes();
-		Factura f=null;
+		Factura f = null;
 
 		do {
 			menuPrincipal();
@@ -27,6 +27,7 @@ public class Empresa {
 
 			}
 		} while (opcion != -1);
+		System.out.println(f);
 
 	}
 
@@ -34,18 +35,37 @@ public class Empresa {
 
 		Scanner entrada = new Scanner(System.in);
 		Cliente c;
-		String DNI;
+		String DNI, descripcion;
+		int cantidad;
+		float precio, total;
+		Detalle detalle;
 
 		System.out.println("DNI del cliente:");
-		DNI = entrada.nextLine();
-		
+		DNI = entrada.next();
+
 		c = clientes.obtenerCliente(DNI);
 		if (c == null) {
 			System.out.println("No existe el cliente");
 		} else {
-			f=new Factura(c);
-		}
+			f = new Factura(c);
 
+			System.out.println("Cantidad:");
+			cantidad = entrada.nextInt();
+			while (cantidad >= 0) {
+				System.out.println("Descripcion:");
+				descripcion = entrada.next();
+				System.out.println("Precio Unitario:");
+				precio = entrada.nextFloat();
+
+				detalle = new Detalle(cantidad, descripcion, precio);
+				f.añadirDetalle(detalle);
+
+				System.out.println("Cantidad:");
+				cantidad = entrada.nextInt();
+			}
+
+		}
+		System.out.println(f);
 	}
 
 	public static void altaCliente(ListaClientes clientes) {
@@ -72,8 +92,8 @@ public class Empresa {
 		System.out.println("--------------------");
 		System.out.println("1- Alta de usuarios");
 		System.out.println("2- Listar usuarios");
-		System.out.println("3- Alta de usuarios");
-		System.out.println("4- Alta de usuarios");
+		System.out.println("3- Crear Factura");
+		System.out.println("4- Ver Factura");
 		System.out.println("--------------------");
 		System.out.println("Selecione (1-4): ");
 
