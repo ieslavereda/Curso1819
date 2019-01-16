@@ -24,11 +24,22 @@ public class Empresa {
 			case 3:
 				crearFactura(clientes, facturas);
 				break;
+			case 4:
+				visualizarFactura(facturas);
+				break;
 
 			}
 		} while (opcion != -1);
 	
 
+	}
+	public static void visualizarFactura(ListaFacturas facturas) {
+		Scanner entrada = new Scanner(System.in);
+		int numFactura;
+		
+		System.out.println("Dime la factura a visualizar:");
+		numFactura=entrada.nextInt();
+		System.out.println(facturas.obtenerFactura(numFactura));
 	}
 
 	public static void crearFactura(ListaClientes clientes, ListaFacturas facturas) {
