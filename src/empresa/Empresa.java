@@ -9,7 +9,7 @@ public class Empresa {
 		Scanner entrada = new Scanner(System.in);
 		int opcion;
 		ListaClientes clientes = new ListaClientes();
-		Factura f = null;
+		ListaFacturas facturas = new ListaFacturas();
 
 		do {
 			menuPrincipal();
@@ -22,17 +22,18 @@ public class Empresa {
 				System.out.println(clientes);
 				break;
 			case 3:
-				crearFactura(clientes, f);
+				crearFactura(clientes, facturas);
 				break;
 
 			}
 		} while (opcion != -1);
-		System.out.println(f);
+	
 
 	}
 
-	public static void crearFactura(ListaClientes clientes, Factura f) {
+	public static void crearFactura(ListaClientes clientes, ListaFacturas facturas) {
 
+		Factura f ;
 		Scanner entrada = new Scanner(System.in);
 		Cliente c;
 		String DNI, descripcion;
@@ -63,9 +64,9 @@ public class Empresa {
 				System.out.println("Cantidad:");
 				cantidad = entrada.nextInt();
 			}
-
+			facturas.insertarFactura(f);
 		}
-		System.out.println(f);
+		
 	}
 
 	public static void altaCliente(ListaClientes clientes) {

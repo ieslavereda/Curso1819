@@ -35,6 +35,11 @@ public class Factura {
 		}
 		this.total = total;
 	}
+	
+
+	public int getNumero() {
+		return numero;
+	}
 
 	public String toString() {
 		Date d = new Date(fecha);
