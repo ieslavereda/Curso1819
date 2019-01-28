@@ -1,7 +1,10 @@
 package tad2;
 
-public class Nodo {
+import java.io.Serializable;
 
+public class Nodo implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private Persona persona;
 	private Nodo siguiente;
 	private Nodo anterior;

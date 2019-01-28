@@ -1,9 +1,12 @@
 package ficheros;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 	private String nombre;
 	private String apellidos;
 	private String telefono;
+	
 	public String getNombre() {
 		return nombre;
 	}

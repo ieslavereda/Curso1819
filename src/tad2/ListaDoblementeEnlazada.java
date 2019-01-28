@@ -1,6 +1,8 @@
 package tad2;
 
-public class ListaDoblementeEnlazada {
+import java.io.Serializable;
+
+public class ListaDoblementeEnlazada implements Serializable{
 
 	private Nodo cabeza;
 	private int cantidad;
