@@ -18,6 +18,8 @@ public class ListaFacturas {
 		if(cabeza==null) {
 			cabeza=nf;
 			cola=nf;
+			cabeza.setAnterior(cola);
+			cola.setSiguiente(cabeza);
 			cantidad++;
 		}else {
 			//Insertamos por la cabeza
@@ -29,7 +31,8 @@ public class ListaFacturas {
 			cola.setSiguiente(nf);
 			nf.setAnterior(cola);
 			cola=nf;			
-			
+			cabeza.setAnterior(cola);
+			cola.setSiguiente(cabeza);
 			cantidad++;
 		}
 	}
@@ -38,14 +41,16 @@ public class ListaFacturas {
 		
 		Factura f=null;		
 		NodoFactura aux= cabeza;
+		int i=1;
 		boolean encontrado=false;
 		
-		while(aux!=null && !encontrado) {
+		while(i<=cantidad && !encontrado) {
 			if(aux.getFactura().getNumero()==numero) {
 				encontrado=true;
 				f=aux.getFactura();
 			}
 			aux=aux.getSiguiente();
+			i++;
 		}
 		
 		return f;
