@@ -15,6 +15,11 @@ public class ListaDoblementeEnlazada implements Serializable{
 	}
 	
 
+	public int getCantidad() {
+		return cantidad;
+	}
+
+
 	public Nodo getCabeza() {
 		return cabeza;
 	}
