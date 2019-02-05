@@ -7,8 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-
-
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -80,9 +78,9 @@ public class Primero extends JFrame {
 		JMenuItem mntmOpen = new JMenuItem("Open");
 		mntmOpen.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				cargarLista();
-				
+
 			}
 		});
 		mnFile.add(mntmOpen);
@@ -170,21 +168,7 @@ public class Primero extends JFrame {
 		btnSave = new JButton("Save");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String titulo = textFieldTitulo.getText();
-				String autor = textFieldAutor.getText();
-				String ISBN = textFieldISBN.getText();
-
-				Libro libro = new Libro(titulo, autor, ISBN);
-				lista.insertarCabeza(new Nodo(libro));
-
-				btnSave.setEnabled(false);
-				btnAdd.setEnabled(true);
-
-				actualizarFrame(lista.getCabeza().getLibro());
-				aux = lista.getCabeza();
-				if (lista.getCantidad() > 1) {
-					btnSiguiente.setEnabled(true);
-				}
+				guardar();
 			}
 		});
 		btnSave.setEnabled(false);
@@ -231,28 +215,48 @@ public class Primero extends JFrame {
 		panel.setLayout(gl_panel);
 	}
 
+	private void guardar() {
+		String titulo = textFieldTitulo.getText();
+		String autor = textFieldAutor.getText();
+		String ISBN = textFieldISBN.getText();
+
+		Libro libro = new Libro(titulo, autor, ISBN);
+		lista.insertarCabeza(new Nodo(libro));
+
+		btnSave.setEnabled(false);
+		btnAdd.setEnabled(true);
+
+		actualizarFrame(lista.getCabeza().getLibro());
+		aux = lista.getCabeza();
+		if (lista.getCantidad() > 1) {
+			btnSiguiente.setEnabled(true);
+		}
+	}
+
 	private void actualizarFrame(Libro libro) {
 		textFieldTitulo.setText(libro.getTitulo());
 		textFieldAutor.setText(libro.getAutor());
 		textFieldISBN.setText(libro.getISBN());
 	}
+
 	private void cargarLista() {
 		JFileChooser jf = new JFileChooser();
 		int opcion = jf.showOpenDialog(null);
-		
+
 		ObjectInputStream ois = null;
 
 		if (opcion == JFileChooser.APPROVE_OPTION) {
 			try {
-				
+
 				ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream(jf.getSelectedFile())));
-				
-				lista = (ListaDoblementeEnlazada)ois.readObject();
-				JOptionPane.showMessageDialog(null, "La lista ha sido cargada", "Informacion", JOptionPane.INFORMATION_MESSAGE, null);
-			}catch(Exception e) {
+
+				lista = (ListaDoblementeEnlazada) ois.readObject();
+				JOptionPane.showMessageDialog(null, "La lista ha sido cargada", "Informacion",
+						JOptionPane.INFORMATION_MESSAGE, null);
+			} catch (Exception e) {
 				e.printStackTrace();
-			}finally {
-				if(ois!=null)
+			} finally {
+				if (ois != null)
 					try {
 						ois.close();
 					} catch (IOException e) {
@@ -261,11 +265,11 @@ public class Primero extends JFrame {
 					}
 			}
 		}
-		
+
 		aux = lista.getCabeza();
-		if(aux!=null) {
+		if (aux != null) {
 			actualizarFrame(aux.getLibro());
-			if(aux.getLibro()!=null) {
+			if (aux.getLibro() != null) {
 				btnSiguiente.setEnabled(true);
 			}
 		}
@@ -283,7 +287,8 @@ public class Primero extends JFrame {
 				oos = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(jf.getSelectedFile())));
 				oos.writeObject(lista);
 
-				JOptionPane.showMessageDialog(null, "La lista ha sido guardada", "Informacion", JOptionPane.INFORMATION_MESSAGE, null);
+				JOptionPane.showMessageDialog(null, "La lista ha sido guardada", "Informacion",
+						JOptionPane.INFORMATION_MESSAGE, null);
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
