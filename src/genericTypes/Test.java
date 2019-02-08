@@ -7,8 +7,8 @@ public class Test {
 		Lista<Socio> listaSocio = new Lista<Socio>();
 		Lista<Libro> listaLibro = new Lista<Libro>();
 		
-		listaSocio.insertar(new Socio("Manolo","Garcia"));
-		listaSocio.insertar(new Socio("Pepe","Lopez"));
+		listaSocio.insertar(new Socio("Manolo","Garcia","2325"));
+		listaSocio.insertar(new Socio("Pepe","Lopez","435254423"));
 		
 		listaLibro.insertar(new Libro("El quijote","Cervantes"));
 		
