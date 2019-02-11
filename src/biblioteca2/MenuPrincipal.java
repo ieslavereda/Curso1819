@@ -70,5 +70,15 @@ public class MenuPrincipal extends JFrame {
 		
 		JButton btnSituacionLibro = new JButton("Situacion libro");
 		panel.add(btnSituacionLibro);
+		
+		JButton btnTest = new JButton("Test");
+		btnTest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				System.out.println(listaSocios);
+				
+			}
+		});
+		panel.add(btnTest);
 	}
 }
