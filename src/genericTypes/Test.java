@@ -10,7 +10,7 @@ public class Test {
 		listaSocio.insertar(new Socio("Manolo","Garcia","2325"));
 		listaSocio.insertar(new Socio("Pepe","Lopez","435254423"));
 		
-		listaLibro.insertar(new Libro("El quijote","Cervantes"));
+		listaLibro.insertar(new Libro("El quijote","Cervantes","45782034"));
 		
 		System.out.println(listaSocio);
 		System.out.println(listaLibro);

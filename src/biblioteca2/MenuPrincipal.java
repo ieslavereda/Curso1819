@@ -26,6 +26,7 @@ public class MenuPrincipal extends JFrame {
 	public MenuPrincipal() {
 		
 		Lista<Socio> listaSocios = new Lista<Socio>();
+		Lista<Libro> listaLibros = new Lista<Libro>();
 		
 		frame = this;
 		setResizable(false);
@@ -51,9 +52,23 @@ public class MenuPrincipal extends JFrame {
 		panel.add(btnAltaSocio);
 		
 		JButton btnAltaLibro = new JButton("Alta libro");
+		btnAltaLibro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				JFrameLibro jfl = new JFrameLibro(listaLibros);
+				jfl.setVisible(true);
+				
+			}
+		});
 		panel.add(btnAltaLibro);
 		
 		JButton btnListadoSocios = new JButton("Listado socios");
+		btnListadoSocios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFrameListadoSocios jfls = new JFrameListadoSocios(listaSocios);
+				jfls.setVisible(true);
+			}
+		});
 		panel.add(btnListadoSocios);
 		
 		JButton btnListadoLibros = new JButton("Listado libros");
@@ -76,6 +91,7 @@ public class MenuPrincipal extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				System.out.println(listaSocios);
+				System.out.println(listaLibros);
 				
 			}
 		});

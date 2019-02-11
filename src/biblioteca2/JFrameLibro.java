@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import genericTypes.Libro;
+import genericTypes.Lista;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -16,19 +20,28 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.Component;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JFrameLibro extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField textFieldTitulo;
+	private JTextField textFieldAutor;
+	private JTextField textFieldISBN;
+	private Lista<Libro> listaLibros; 
+	
+	
 
 	/**
 	 * Create the frame.
 	 */
-	public JFrameLibro() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public JFrameLibro(Lista<Libro> listaLibros) {
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		this.listaLibros = listaLibros;
+		
+		setTitle("Libro");
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -46,14 +59,14 @@ public class JFrameLibro extends JFrame {
 		
 		JLabel lblCantidadDeEjemplares = new JLabel("Cantidad de ejemplares");
 		
-		textField = new JTextField();
-		textField.setColumns(10);
+		textFieldTitulo = new JTextField();
+		textFieldTitulo.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
+		textFieldAutor = new JTextField();
+		textFieldAutor.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
+		textFieldISBN = new JTextField();
+		textFieldISBN.setColumns(10);
 		
 		JSpinner spinner = new JSpinner();
 		spinner.setModel(new SpinnerNumberModel(10, 1, 50, 1));
@@ -61,6 +74,14 @@ public class JFrameLibro extends JFrame {
 		JButton btnCancelar = new JButton("Cancelar");
 		
 		JButton btnAdd = new JButton("Add");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// comprobar campos
+				// añadir libro
+				addLibro();
+				dispose();
+			}
+		});
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -70,7 +91,7 @@ public class JFrameLibro extends JFrame {
 						.addGroup(gl_panel.createSequentialGroup()
 							.addComponent(lblTitulo)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(textField, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))
+							.addComponent(textFieldTitulo, GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))
 						.addGroup(gl_panel.createSequentialGroup()
 							.addComponent(lblCantidadDeEjemplares)
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -81,8 +102,8 @@ public class JFrameLibro extends JFrame {
 								.addComponent(lblIsbn))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-								.addComponent(textField_2, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
-								.addComponent(textField_1, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)))
+								.addComponent(textFieldISBN, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+								.addComponent(textFieldAutor, GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)))
 						.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
 							.addComponent(btnAdd)
 							.addPreferredGap(ComponentPlacement.UNRELATED)
@@ -95,15 +116,15 @@ public class JFrameLibro extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblTitulo)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldTitulo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblAutor)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldAutor, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblIsbn)
-						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(textFieldISBN, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCantidadDeEjemplares)
@@ -116,5 +137,16 @@ public class JFrameLibro extends JFrame {
 		);
 		gl_panel.linkSize(SwingConstants.HORIZONTAL, new Component[] {btnCancelar, btnAdd});
 		panel.setLayout(gl_panel);
+	}
+	
+	private void addLibro() {
+		String titulo,autor,isbn;
+		
+		titulo = textFieldTitulo.getText();
+		autor = textFieldAutor.getText();
+		isbn = textFieldISBN.getText();
+		
+		listaLibros.insertar(new Libro(titulo,autor,isbn));
+		
 	}
 }

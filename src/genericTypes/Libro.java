@@ -3,11 +3,20 @@ package genericTypes;
 public class Libro {
 	private String titulo;
 	private String autor;
-	public Libro(String titulo, String autor) {
+	private String ISBN;
+	
+	
+	public Libro(String titulo, String autor, String iSBN) {
 		super();
 		this.titulo = titulo;
 		this.autor = autor;
+		ISBN = iSBN;
 	}
+	
+	public String getISBN() {
+		return ISBN;
+	}
+
 	public String getTitulo() {
 		return titulo;
 	}
@@ -20,9 +29,11 @@ public class Libro {
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
+
 	@Override
 	public String toString() {
-		return "[titulo=" + titulo + ", autor=" + autor + "]\n";
+		return "Libro [titulo=" + titulo + ", autor=" + autor + ", ISBN=" + ISBN + "]";
 	}
+
 
 }
