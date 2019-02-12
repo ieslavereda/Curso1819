@@ -81,6 +81,12 @@ public class MenuPrincipal extends JFrame {
 		panel.add(btnListadoLibros);
 		
 		JButton btnPrestamo = new JButton("Prestamo");
+		btnPrestamo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JFramePrestamo jfp = new JFramePrestamo(listaSocios,listaLibros);
+				jfp.setVisible(true);
+			}
+		});
 		panel.add(btnPrestamo);
 		
 		JButton btnDevolucion = new JButton("Devolucion");
