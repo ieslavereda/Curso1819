@@ -4,6 +4,7 @@ public class Libro {
 	private String titulo;
 	private String autor;
 	private String ISBN;
+	private Lista<Ejemplar> ejemplares;
 	
 	
 	public Libro(String titulo, String autor, String iSBN) {
@@ -11,8 +12,16 @@ public class Libro {
 		this.titulo = titulo;
 		this.autor = autor;
 		ISBN = iSBN;
+		ejemplares=new Lista<Ejemplar>();
+		
 	}
 	
+	
+	public Lista<Ejemplar> getEjemplares() {
+		return ejemplares;
+	}
+
+
 	public String getISBN() {
 		return ISBN;
 	}
