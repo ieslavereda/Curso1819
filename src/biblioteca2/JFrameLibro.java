@@ -30,6 +30,7 @@ public class JFrameLibro extends JFrame {
 	private JTextField textFieldAutor;
 	private JTextField textFieldISBN;
 	private Lista<Libro> listaLibros; 
+	private JSpinner spinner;
 	
 	
 
@@ -68,7 +69,7 @@ public class JFrameLibro extends JFrame {
 		textFieldISBN = new JTextField();
 		textFieldISBN.setColumns(10);
 		
-		JSpinner spinner = new JSpinner();
+		spinner = new JSpinner();
 		spinner.setModel(new SpinnerNumberModel(10, 1, 50, 1));
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -146,7 +147,7 @@ public class JFrameLibro extends JFrame {
 		autor = textFieldAutor.getText();
 		isbn = textFieldISBN.getText();
 		
-		listaLibros.insertar(new Libro(titulo,autor,isbn));
+		listaLibros.insertar(new Libro(titulo,autor,isbn,Integer.parseInt(spinner.getValue().toString())));
 		
 	}
 }

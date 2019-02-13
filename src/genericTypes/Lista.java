@@ -11,6 +11,20 @@ public class Lista<E> {
 		this.cantidad = 0;
 	}
 	
+	
+	
+	public E obtenerPosicion(int posicion) {
+		
+		Nodo<E> nodo = cabeza;
+		E info = null;
+		if (posicion<=cantidad) {
+			for(int i=0;i<posicion;i++)nodo=nodo.getSiguiente();
+			info=nodo.getInfo();
+		}
+		
+		return info;
+	}
+	
 	public void insertar(E info) {
 		
 		Nodo<E> n = new Nodo<E>(info);

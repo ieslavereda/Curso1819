@@ -4,15 +4,23 @@ public class Socio {
 	private String nombre;
 	private String apellidos;
 	private String DNI;
+	private Lista<Ejemplar> ejemplares;
 
 	public Socio(String nombre, String apellidos, String DNI) {
 		super();
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.DNI = DNI;
+		ejemplares = new Lista<Ejemplar>();
 	}
 	
 	
+
+	public Lista<Ejemplar> getEjemplares() {
+		return ejemplares;
+	}
+
+
 
 	public String getNombre() {
 		return nombre;
