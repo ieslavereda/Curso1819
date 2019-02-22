@@ -12,22 +12,14 @@ public class Socio {
 		this.apellidos = apellidos;
 		this.DNI = DNI;
 		ejemplares = new Lista<Ejemplar>();
-	}
-	
-	
+	}	
 
 	public Lista<Ejemplar> getEjemplares() {
 		return ejemplares;
 	}
-
-
-
 	public String getNombre() {
 		return nombre;
 	}
-
-
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
