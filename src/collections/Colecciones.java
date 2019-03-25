@@ -4,10 +4,13 @@
 package collections;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 import java.util.TreeSet;
@@ -39,6 +42,7 @@ public class Colecciones {
 		personas.add(p3);
 		personas.add(p3);
 		personas.add(p3);
+		System.out.println(personas.add(p11));
 		
 		System.out.println(p1.hashCode());
 		System.out.println(p11.hashCode());
@@ -46,9 +50,24 @@ public class Colecciones {
 		System.out.println(p11.equals(p1));
 		System.out.println(personas.contains(p11));
 		
-		for (Persona p : personas) {
-			System.out.println(p);
+		// Produce error. Hay que utilizar Iterator
+//		for (Persona p : personas) {
+//			if(p.getNombre().compareTo("Pepe")==0)personas.remove(p);
+//		}
+		
+		Iterator iterator = personas.iterator();
+		Persona p;
+		while(iterator.hasNext()) {
+			p = (Persona)iterator.next();
+			if(p.getNombre().compareTo("Pepe")==0)iterator.remove();
+			
 		}
+		for (Persona person : personas) {
+			System.out.println(person);
+		}
+		
+		
+		
 
 		Set<Integer> numerosHashSet = new HashSet<Integer>();
 		numerosHashSet.add(7);
@@ -71,8 +90,8 @@ public class Colecciones {
 		numerosTreeSet.add(65);
 		numerosTreeSet.add(11);
 
-		for (Integer i : numerosTreeSet) {
-			System.out.println(i);
+		for (Integer i1 : numerosTreeSet) {
+			System.out.println(i1);
 		}
 
 		Set<Integer> numerosLinkedHashSet = new LinkedHashSet<Integer>();
@@ -120,9 +139,20 @@ public class Colecciones {
 		numQueue.offer(1);
 		int size = numQueue.size();
 		System.out.println("\nQueue");
-		for (int i = 0; i <= size; i++) {
+		for (int i1 = 0; i1 < size; i1++) {
 			System.out.println(numQueue.remove());
 		}
+		
+		System.out.println("\nHashMap");
+		Map<String,Float> precios = new HashMap<String,Float>();
+		precios.put("manzanas", 1.25f);
+		precios.put("platanos", 2.25f);
+		
+		for (String key : precios.keySet()) {
+			System.out.println(key + ": " + precios.get(key));
+		}
+		
+		
 
 	}
 
